@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Your Books</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            background-color: slategrey;
+        }
+        div {
+            background-color: lightgrey;
+            width: 300px;
+            border: 25px solid green;
+            padding: 25px;
+            margin: 25px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Edit a Book</h1>
+    <form action="#" th:action="@{/saveExistingBook}" th:object="${book}" method="post">
+        <input bookType="hidden" th:field="*{id}" />
+        <p>Title: <input bookType="text" th:field="*{title}" /></p>
+        <p>Author: <input bookType="text" th:field="*{author}" /></p>
+        <p>Publication Year: <input bookType="number" th:field="*{publicationYear}" /></p>
+        <p>Type:
+            <input bookType="radio" th:value="fiction" th:field="*{bookType}" /> Fiction
+            <input bookType="radio" th:value="non-fiction" th:field="*{bookType}" /> Non fiction
+            <input bookType="radio" th:value="other" th:field="*{bookType}" /> Other
+        </p>
+        <p>Read?: <input bookType="checkbox" th:field="*{bookRead}" /></p>
+        <p>Rating (out of 100): <input bookType="range" th:field="*{rating}" /></p>
+
+
+        <p><input bookType="submit" value="Submit"/></p>
+    </form>
+</div>
+</body>
+</html>
